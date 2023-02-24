@@ -23,7 +23,7 @@ namespace TestBlog.Business.BlogBusiness
            return  _blogRepository.GetBlogs();
         }
 
-        public Blogs GetBlogsById(int id)
+        public IEnumerable<Blogs> GetBlogsById(int id)
         {
             return _blogRepository.GetBlog(id);
         }

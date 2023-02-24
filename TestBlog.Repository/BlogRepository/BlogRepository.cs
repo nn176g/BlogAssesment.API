@@ -84,7 +84,7 @@ namespace TestBlog.Repository.BlogRepository
             return tempBlog;
         }
 
-        public Blogs GetBlog(int blogId)
+        public IEnumerable<Blogs> GetBlog(int blogId)
         {
             _logger.LogInformation("Attempting to get Blog by Id");
             var result= _dbContext.Blogs
@@ -94,7 +94,7 @@ namespace TestBlog.Repository.BlogRepository
                 .Include(blog => blog.Comments)
                     .ThenInclude(comment => comment.Blog.Comments)
                         .ThenInclude(reply => reply.Parent)
-                .FirstOrDefault(blog => blog.Id == blogId);
+                .Where(blog => blog.Id == blogId);
             
             if (result != null)
             {
@@ -167,7 +167,7 @@ namespace TestBlog.Repository.BlogRepository
             var blog = GetBlog(id);
             if (blog!= null)
             {
-                _dbContext.Blogs.Remove(blog);
+                _dbContext.Blogs.Remove(blog.FirstOrDefault());
                 await _dbContext.SaveChangesAsync();
                 _logger.LogInformation("Delete method successful");
             }else

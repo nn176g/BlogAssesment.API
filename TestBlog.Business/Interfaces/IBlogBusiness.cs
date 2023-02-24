@@ -11,7 +11,7 @@ namespace TestBlog.Business.Interfaces
         IEnumerable<Blogs> GetBlogs();
         IEnumerable<Blogs> GetBlogsByOwner(string applicationUserId);
         IEnumerable<Blogs> GetBlogsBySearchData(string searchData, string id);
-        Blogs GetBlogsById(int id);
+        IEnumerable<Blogs> GetBlogsById(int id);
         Task<Blogs> Insert(Blogs model);
         Task<Comments> Insert(Comments model);
         Comments GetCommentById(int id);

@@ -8,7 +8,7 @@ namespace TestBlog.Repository.Interfaces
 {
     public interface IBlogRepository
     {
-        Blogs GetBlog(int id);
+        IEnumerable<Blogs> GetBlog(int id);
         IEnumerable<Blogs> GetBlogs();
         IEnumerable<Blogs> GetBlogs(string searchString, string id);
         Task<Blogs> Add(Blogs blog);

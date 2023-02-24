@@ -96,26 +96,26 @@ namespace TestBlog.API.Controllers
                 _logger.LogError(e.Message);
                 throw e;
             }
-
         }
 
         [HttpGet]
         [Route("api/[controller]/{id}")]
-        public Blogs GetById(int id)
+        public IActionResult GetById(int id)
         {
             try
             {
                 var blog = _blogBusiness.GetBlogsById(id);
                 Response.StatusCode = 200;
-                return blog;
+                //return ;
+                return Ok(blog);
             }
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
                 throw e;
             }
-
         }
+
         [HttpPost]
         [Route("api/[controller]/insertblog")]
         public async Task<IActionResult> InsertBlog(Blogs model)
