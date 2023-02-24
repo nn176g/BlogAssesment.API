@@ -30,7 +30,7 @@ namespace TestBlog.Business.BlogBusiness
 
         public IEnumerable<Blogs> GetBlogsBySearchData(string searchData,string id)
         {
-            return _blogRepository.GetBlogs(searchData,id);
+             return _blogRepository.GetBlogs(searchData,id);
         }
         public IEnumerable<Blogs> GetBlogsByOwner(string applicationUserId)
         {
